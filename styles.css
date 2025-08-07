@@ -1,7 +1,7 @@
 /* Custom Font Definition */
 @font-face {
     font-family: 'Citadel Script';
-    src: url('assests/fonts/CitadelScriptStd.otf') format('opentype'); /* Path to your font file */
+    src: url('assets/fonts/CitadelScriptStd.otf') format('opentype'); /* Path to your font file */
     font-weight: normal;
     font-style: normal;
 }
