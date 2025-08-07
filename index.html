@@ -40,7 +40,7 @@
                     <div class="qualification-item gpa-item">
                         <h4>gpa</h4>
                         <p class="school-name">glen a wilson high school</p>
-                        <p>4.57 / 4.0</p>
+                        <p id="gpa-value" data-gpa="4.57">4.57 / 4.0</p>
                     </div>
 
                     <!-- Experience Item -->
@@ -175,6 +175,47 @@
                 scrollArrow.classList.remove('fade-out');
             }
         });
+
+        /**
+         * GPA Count-Up Animation
+        **/
+        const gpaElement = document.getElementById('gpa-value');
+        const finalGpa = parseFloat(gpaElement.dataset.gpa); // Get the final GPA from the data attribute
+
+        // Function to start the animation
+        const startCountUp = () => {
+            let start = 0;
+            const duration = 2000; // Animation duration in milliseconds
+            const range = finalGpa - start;
+            let current = start;
+            const increment = finalGpa / (duration / 10); // Calculate increment
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= finalGpa) {
+                    clearInterval(timer);
+                    gpaElement.textContent = `${finalGpa.toFixed(2)} / 4.0`; // Ensure the final value is exact
+                } else {
+                    gpaElement.textContent = `${current.toFixed(2)} / 4.0`;
+                }
+            }, 10); // Update every 10ms
+        };
+
+        // Set the initial text
+        gpaElement.textContent = '0.00 / 4.0';
+
+        // Use IntersectionObserver to trigger the animation when the element is visible
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                startCountUp();
+                observer.unobserve(gpaElement); // Stop observing after animation starts
+            }
+        }, {
+            threshold: 0.5 // Trigger when 50% of the element is visible
+        });
+
+        // Start observing the GPA element
+        observer.observe(gpaElement);
     </script>
 </body>
 </html>
