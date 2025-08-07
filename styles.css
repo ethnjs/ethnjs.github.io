@@ -1,0 +1,415 @@
+/* Custom Font Definition */
+@font-face {
+    font-family: 'Citadel Script';
+    src: url('assests/fonts/CitadelScriptStd.otf') format('opentype'); /* Path to your font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Basic Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; 
+    color: #f0f0f0;
+    user-select: none;
+}
+
+/* Full-Screen Hero Section */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column; /* Stacks the text blocks vertically */
+    align-items: flex-start; /* Aligns items to the start (left) */
+    margin: 0;
+    padding: 0;
+}
+
+.intro-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    color: #ffffff;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.name-text {
+    font-family: 'Citadel Script', cursive; /* Use the custom font */
+    font-weight: 400;
+    font-size: 10rem; /* Adjust size as needed */
+    color: #ffffff;
+    line-height: 1;
+    margin-top: -1.5rem; /* Negative margin to pull it up, overlapping slightly */
+}
+
+/* Scroll Down Arrow Styling */
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 22px;
+    background-color: #fff;
+    opacity: 0.7;
+    cursor: pointer;
+    animation: subtle-float 2.5s infinite ease-in-out;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Arrowhead created with a pseudo-element */
+.scroll-down-arrow::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    width: 14px; /* Slightly larger head to match bolder line */
+    height: 14px;
+    border-left: 3px solid #fff; /* Bolder arrowhead (was 2px) */
+    border-bottom: 3px solid #fff; /* Bolder arrowhead (was 2px) */
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.scroll-down-arrow:hover {
+    opacity: 1;
+}
+
+/* Class added by JavaScript to hide the arrow */
+.scroll-down-arrow.fade-out {
+    opacity: 0;
+    transform: translate(-50%, 20px); /* Move down slightly as it fades */
+    animation: none; /* Stop the animation when hidden */
+}
+
+/* Subtle Floating Animation */
+@keyframes subtle-float {
+    0% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, 5px);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Container for the rest of the content */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #121212;  
+}
+
+/* Section Styling */
+.section {
+    padding: 4rem 0;
+    border-bottom: 1px solid #222; /* Very subtle border for dark mode */
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+/* Typography for content sections */
+h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #ccc;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Links */
+a {
+    color: #ccc; /* A brighter blue for better contrast */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+/* --- Qualifications Section Styling --- */
+.qualifications {
+    margin-top: 4rem;
+    padding-top: 3rem;
+}
+
+.qualifications h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.qualifications-list {
+    display: grid;
+    gap: 2rem 3rem; /* row-gap and column-gap */
+    grid-template-areas:
+        "gpa"
+        "experience"
+        "courses"; /* Mobile-first: default to a single column */
+}
+
+/* Assign grid areas to the items */
+.gpa-item { grid-area: gpa; }
+.experience-item { grid-area: experience; }
+.coursework-item { grid-area: courses; }
+
+.qualification-item h4 {
+    font-size: 1.2rem;
+    color: #ffffff; /* Use your accent color */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.qualification-item ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.qualification-item li {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dotted #222;
+}
+
+.qualification-item li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.qualification-item li strong {
+    color: #fff;
+    font-weight: 700;
+    padding-left: 1rem; /* Space between item and grade/score */
+}
+
+/* Special style for the GPA paragraph */
+.qualification-item p {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.qualification-item p.school-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #888;
+    margin-top: -0.3rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* Styling for the Experience section bullet points */
+.experience-item ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+}
+
+.experience-item li {
+    color: #ccc;
+    font-size: 1rem;
+    padding-left: 1.5rem; /* Indentation for the bullet point */
+    position: relative;
+    margin-bottom: 0.75rem;
+}
+
+/* Create a custom bullet point that matches the site's aesthetic */
+.experience-item li::before {
+    content: '—'; /* An em dash for a clean, minimalist bullet */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #666; /* Muted color for the bullet */
+}
+
+.coursework-table {
+    width: 100%;
+    border-collapse: collapse; /* Removes default table spacing */
+    margin-top: 1.5rem;
+}
+
+/* Style the header row (Course, Grade, AP Score) */
+.coursework-table thead tr {
+    border-bottom: 1px solid #333;
+}
+
+.coursework-table th {
+    color: #888;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+/* Define column widths and alignment */
+.course-col { width: 60%; }
+.grade-col  { text-align: center; }
+.score-col  { text-align: center; }
+
+/* Style the data rows in the table body */
+.coursework-table tbody tr {
+    border-bottom: 1px dotted #222;
+}
+
+.coursework-table tbody tr:last-child {
+    border-bottom: none; /* No border on the very last row */
+}
+
+.coursework-table td {
+    padding: 1rem 0.5rem;
+    color: #ccc;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Center the text in the grade and score columns */
+.coursework-table td:nth-child(2),
+.coursework-table td:nth-child(3) {
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Style for the N/A scores within the table */
+.coursework-table td.na-score {
+    color: #777;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* Tutoring Cards */
+.tutoring-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.card {
+    background-color: #111;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #666;
+}
+
+.card h3 {
+    font-family: 'Inter', sans-serif;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+/* Contact Section */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 768px) {
+
+    /* Adjust hero section text for smaller screens */
+    .hero-title {
+        justify-content: center; /* Center the text block on mobile */
+    }
+
+    .intro-text {
+        font-size: 3rem; /* Smaller font for the intro text */
+        text-align: left;
+    }
+
+    .name-text {
+        font-size: 6rem; /* Smaller font for the name */
+        margin-top: -1rem; /* Adjust overlap for new font size */
+    }
+
+    /* Reduce general padding to save space */
+    .container {
+        padding: 1rem;
+    }
+
+    .section {
+        padding: 3rem 0; /* Reduce top/bottom padding in sections */
+    }
+
+    /* Reduce section header font size */
+    h2 {
+        font-size: 2rem;
+    }
+
+    /* Stack tutoring cards vertically */
+    .tutoring-cards {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 800px) {
+    /* On larger screens, create the multi-column layout */
+    .qualifications-list {
+        grid-template-columns: 1fr 2fr; /* Two columns */
+        grid-template-areas:
+            "gpa        experience"
+            "courses    courses";
+    }
+}
