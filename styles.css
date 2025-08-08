@@ -269,28 +269,71 @@ a:hover {
     line-height: 1.5;
 }
 
-/* Styling for the Experience section bullet points */
-.experience-item ul {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 0;
+.experience-item h4 { margin-bottom: 0.5rem; }
+
+.experience-accordion { width: 100%; }
+
+.accordion-item {
+    border-bottom: 1px dotted #222;
 }
 
-.experience-item li {
-    color: #ccc;
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+/* Style the button that triggers the dropdown */
+.accordion-toggle {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 1rem 0;
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    padding-left: 1.5rem; /* Indentation for the bullet point */
+    color: #ccc;
+    cursor: pointer;
     position: relative;
-    margin-bottom: 0.75rem;
+    padding-left: 1.5rem; /* Space for the icon */
+    transition: color 0.3s ease;
 }
 
-/* Create a custom bullet point that matches the site's aesthetic */
-.experience-item li::before {
-    content: '—'; /* An em dash for a clean, minimalist bullet */
+.accordion-toggle:hover {
+    color: #fff;
+}
+
+/* The '+' and '-' icon */
+.accordion-toggle::before {
+    content: '+';
     position: absolute;
     left: 0;
-    top: 0;
-    color: #666; /* Muted color for the bullet */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #666;
+    transition: transform 0.3s ease;
+}
+
+.accordion-toggle[aria-expanded="true"]::before {
+    transform: translateY(-50%) rotate(45deg); /* Turns '+' into 'x' */
+}
+
+/* The dropdown content area */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.accordion-content ul {
+    list-style: disc; /* Use standard disc bullets for sub-points */
+    padding-left: 2.5rem;
+    padding-bottom: 1rem;
+}
+
+.accordion-content li {
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 0.5rem;
 }
 
 .coursework-table {
@@ -313,7 +356,7 @@ a:hover {
 }
 
 /* Define column widths and alignment */
-.course-col { width: 60%; }
+.course-col { width: 60%; text-align: left;}
 .grade-col  { text-align: center; }
 .score-col  { text-align: center; }
 
