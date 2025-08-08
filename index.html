@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Link to Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
@@ -134,31 +137,50 @@
 
         <!-- Private Tutoring Section -->
         <section class="section" id="tutoring">
-            <h2>Private Tutoring</h2>
-            <p class="text-center">I offer personalized one-on-one tutoring sessions for the following subjects:</p>
+            <h2>private tutoring</h2>
+            <p class="text-center">one-on-one, in-person or virtual tutoring for the following subjects:</p>
             <div class="tutoring-cards">
                 <div class="card">
-                    <h3>[Subject 1]</h3>
-                    <p>e.g., High School Mathematics</p>
+                    <h3>math</h3>
+                    <p>high school / ap level math</p>
                 </div>
                 <div class="card">
-                    <h3>[Subject 2]</h3>
-                    <p>e.g., Physics</p>
+                    <h3>physics</h3>
+                    <p>high school / ap level physics</p>
                 </div>
                 <div class="card">
-                    <h3>[Subject 3]</h3>
-                    <p>e.g., SAT Prep</p>
+                    <h3>chemistry</h3>
+                    <p>high school / ap level chemistry</p>
                 </div>
+                <div class="card">
+                    <h3>computer science</h3>
+                    <p>ap level computer science</p>
+                </div>
+            </div>
+            <div class="button-container">
+                <a href="https://forms.gle/Bit4ZyMSp71u2f4A7" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    sign up
+                </a>
             </div>
         </section>
 
         <!-- Contact Me Section -->
         <section class="section text-center" id="contact">
             <h2>contact</h2>
-            <p>if you have any questions, feel free to reach out.</p>
+            <p>if you have any questions, feel free to reach out</p>
             <div class="contact-info">
-                <p><a href="mailto:[ethnj.shih@gmail.com]"><strong>[ethnj.shih@gmail.com]</strong></a></p>
-                <p><a href="https://www.linkedin.com/in/[your-linkedin-profile]" target="_blank"><strong>LinkedIn Profile</strong></a></p>
+                <p class="email-link">
+                    <a id="email-address" title="copy to clipboard"><strong>ethnj.shih@gmail.com</strong></a>
+                </p>
+                <div id="copy-popup" class="copy-popup">copied!</div>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/ethanshih1" class="contact-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/ethnjs" class="contact-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -176,9 +198,7 @@
             }
         });
 
-        /**
-         * GPA Count-Up Animation
-        **/
+        /* ---- GPA Count-Up Animation ---- */
         const gpaElement = document.getElementById('gpa-value');
         const finalGpa = parseFloat(gpaElement.dataset.gpa); // Get the final GPA from the data attribute
 
@@ -216,6 +236,29 @@
 
         // Start observing the GPA element
         observer.observe(gpaElement);
+
+        /* ---- Copy Email to Clipboard ---- */
+        const emailLink = document.getElementById('email-address');
+        const copyPopup = document.getElementById('copy-popup');
+
+        emailLink.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent any default link behavior
+            
+            const email = emailLink.textContent; // Get the email text
+
+            // Use the modern Navigator API to copy to clipboard
+            navigator.clipboard.writeText(email).then(() => {
+                // Show the popup
+                copyPopup.classList.add('show');
+
+                // Hide the popup after 2 seconds
+                setTimeout(() => {
+                    copyPopup.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err); // Error handling
+            });
+        });
     </script>
 </body>
 </html>
