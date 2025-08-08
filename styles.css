@@ -195,6 +195,13 @@ p {
     text-align: center;
 }
 
+.caption {
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
 /* Links */
 a {
     color: #ccc; /* A brighter blue for better contrast */
@@ -299,7 +306,7 @@ a:hover {
 }
 
 /* Special style for the GPA paragraph */
-.qualification-item p {
+#gpa-value {
     font-size: 2.5rem;
     font-weight: 700;
     color: #fff;
