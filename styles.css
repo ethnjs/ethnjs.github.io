@@ -21,6 +21,53 @@ body {
     user-select: none;
 }
 
+/* ---- Loading Screen ---- */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensures it's on top of everything */
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    border: 5px solid #333; /* The track of the spinner */
+    border-top: 5px solid #fff; /* The moving part of the spinner */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+/* Class to hide the loader */
+#loader-wrapper.hidden {
+    opacity: 0;
+    visibility: hidden; /* Makes it non-interactive during fade-out */
+}
+
+/* The spinning animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Site Content Fade-In Styling */
+#site-content {
+    opacity: 0; /* Start with the content invisible */
+    transition: opacity 0.8s ease-in-out; /* Define the fade animation */
+}
+
+/* Class to trigger the fade-in */
+#site-content.loaded {
+    opacity: 1; /* Make the content visible */
+}
+
 /* Full-Screen Hero Section */
 .hero-section {
     height: 100vh;
